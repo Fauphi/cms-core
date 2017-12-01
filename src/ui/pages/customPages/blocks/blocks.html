@@ -1,0 +1,83 @@
+<!--
+
+	Create new block:
+
+	1: Add template in this file
+	2: Add file with template name in /private/blocks and insert template code
+	3: Add template name to "templates" variable (l.15) in /imports/core/ui/pages/customPages/blocks/blocks.js
+	4: Add template to "asCmsTemplates" helper (l.75) in in /imports/core/ui/pages/customPages/createCustomPage.js
+	5: Create template schema in /imports/core/ui/pages/customPages/clientCollections.js
+
+-->
+
+<template name="asCmsText">
+	<div class="asCmsText">
+		<div class="text quill-content" style="text-align: {{block.content.alignment}};">{{{ block.content.text }}}</div>
+	</div>
+</template>
+
+<template name="asCmsImage">
+	<div class="asCmsImage">
+		<img src="{{ resizeImage block.content.url '800' }}"/>
+		<div class="title quill-content">{{{ block.content.text }}}</div>
+	</div>
+</template>
+
+<template name="asCmsColumns">
+	<div class="asCmsColumns">
+		<div class="col">
+			<img src="{{ block.content.url1 }}"/>
+			<div class="quill-content">{{{ block.content.text1 }}}</div>
+		</div>
+		<div class="col">
+			<img src="{{ block.content.url2 }}"/>
+			<div class="quill-content">{{{ block.content.text2 }}}</div>
+		</div>
+		<div class="col">
+			<img src="{{ block.content.url3 }}"/>
+			<div class="quill-content">{{{ block.content.text3 }}}</div>
+		</div>
+	</div>
+</template>
+
+<template name="asCmsHero">
+	<div class="asCmsHero">
+		<div class="image" style="background-image: url({{ resizeImage block.content.url '1400' }})"></div>
+		<div class="overlay"></div>
+		<div class="flexcenter">
+			<div class="text-on-img quill-content">{{{ block.content.text }}}</div>
+		</div>
+	</div>
+</template>
+
+<template name="asCmsBigTitle">
+	<div class="asCmsBigTitle">
+		<div class="text quill-content">{{{ block.content.text }}}</div>
+		{{#if block.content.showPageDate}}
+			<div class="date">{{formatDate page.createdAt}}</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="asCmsPeople">
+	<div class="asCmsPeople">
+		{{#with getPeople block.content.people }}
+			<div class="image">
+				<img src="{{ resizeImage image '200'}}" width="200px" />
+			</div>
+			<div class="info">
+				<div class="name">{{ name }}</div>
+				<div class="text">Phone: <b>{{ phone }}</b></div>
+				<div class="text">Email: <b>{{ email }}</b></div>
+			</div>
+		{{else}}
+			<div class="text"><i>Select a person to display here by clicking on the "Content" button.</i></div>
+		{{/with}}
+	</div>
+</template>
+
+<template name="asCmsSeparator">
+	<div class="asCmsSeparator">
+		<hr/>
+	</div>
+</template>

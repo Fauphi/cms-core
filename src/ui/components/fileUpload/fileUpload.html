@@ -1,0 +1,13 @@
+<template name="fileUpload">
+	
+	<div id="fileUpload">
+		<input name="file" type="file" id="cloudinary-upload" data-cloudinary-field="file_id" data-form-data="" style="display: none;" />
+		{{ getCData }}
+		<button class="btn btn-default file-btn" data-action="select-file">Upload File</button>
+		<div class="progress-wrapper">
+			<div id="progress-bar" style="display: none;"></div>
+			<div id="percent" style="display: none;">0%</div>
+		</div>
+	</div>
+
+</template>

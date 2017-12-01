@@ -1,0 +1,53 @@
+$btnGreen: #5CB85C
+$btnYellow: #FFD966
+$lblLightGrey: #d9d9d9
+
+#sitemap
+	.btn-checkbox
+		display: block
+		margin-bottom: 8px
+		width: 100%
+		text-align: left
+		// background-color: $btnGreen !important
+		// border-color: $btnGreen !important
+		background-color: transparent !important
+		border-color: rgba(0,0,0,0.1) !important
+		color: black
+		border-radius: 0
+		&:hover
+			// background-color: darken($btnGreen, 10%) !important
+			background-color: rgba(0,0,0,0.05) !important
+		&.sub
+			position: relative
+			width: calc(100% - 40px)
+			margin-left: 40px
+			// background-color: $btnYellow !important
+			// border-color: $btnYellow !important
+			background-color: transparent !important
+			border-color: rgba(0,0,0,0.1) !important
+			color: #333 !important
+			&:hover
+				// background-color: darken($btnYellow, 10%) !important
+				background-color: rgba(0,0,0,0.05) !important
+			&:before
+				color: #333 !important
+			&:after
+				position: absolute
+				top: 0px
+				left: -40px
+				text-align: center
+				line-height: 32px
+				border: 2px dashed $lblLightGrey
+				color: $lblLightGrey
+				content: '\21b3'
+				width: 32px
+				height: 32px
+				font-size: 20px
+		&:before
+			content: ''
+			color: black
+			padding-right: 18px
+		&.active
+			&:before
+				content: '\2713'
+				padding-right: 8px

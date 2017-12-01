@@ -1,0 +1,286 @@
+
+// * @Author: Radu Gota (radu@attic-studio.net)
+// * @Date:   2016-09-14 12:38:31
+// * @Last Modified by:   Radu Gota (radu@attic-studio.net)
+// * @Last Modified time: 2017-04-20 01:34:20
+
+
+.full-height
+	height: 100% !important
+
+// margin and padding
+.nopadding
+	padding: 0 !important
+.nomargin
+	margin: 0 !important	
+
+// floats
+.pull-left
+	float: left
+.pull-right
+	float: right
+
+// text-align
+.text-center
+	text-align: center
+.text-left
+	text-align: left
+.text-right
+	text-align: right				
+
+.forSmall
+	display: none
+	@media(max-width: 768px)
+		display: initial
+.forBig
+	display: auto
+	@media(max-width: 768px)
+		display: none
+
+.notForMedium
+	@media(max-width: 991px) and (min-width: 768px)
+		display: none !important
+
+.forMedium
+	@media(max-width: 991px) and (min-width: 768px)
+		display: initial !important		
+
+
+.padLeft35
+	padding-left: 35px
+
+/// 60fps scroll
+.disable-hover, .disable-hover *
+	pointer-events: none !important
+
+
+// flexing classes and mixins
+.flexcenter
+	display: -webkit-box
+	display: -ms-flexbox
+	display: -moz-box	
+	display: -webkit-flex
+	display: flex
+	-webkit-align-items: center
+	align-items: center
+	-webkit-justify-content: center
+	justify-content: center
+	height: 100%
+	&.left
+		flex-direction: column
+		-webkit-align-items: flex-start
+		align-items: flex-start
+
+@mixin flexcenter()
+	display: -webkit-box
+	display: -ms-flexbox
+	display: -moz-box	
+	display: -webkit-flex
+	display: flex
+	-webkit-align-items: center
+	align-items: center
+	-webkit-justify-content: center
+	justify-content: center
+	height: 100%
+.flexleft
+	display: -webkit-box
+	display: -ms-flexbox
+	display: -moz-box	
+	display: -webkit-flex
+	display: flex
+	-webkit-align-items: center
+	align-items: center
+	-webkit-justify-content: flex-start
+	justify-content: flex-start	
+	height: 100%
+@mixin flexleft()
+	display: -webkit-box
+	display: -ms-flexbox
+	display: -moz-box	
+	display: -webkit-flex
+	display: flex
+	-webkit-align-items: center
+	align-items: center
+	-webkit-justify-content: flex-start
+	justify-content: flex-start	
+	height: 100%	
+.flexright
+	display: -webkit-box
+	display: -ms-flexbox
+	display: -moz-box	
+	display: -webkit-flex
+	display: flex
+	-webkit-align-items: center
+	align-items: center
+	-webkit-justify-content: flex-end
+	justify-content: flex-end	
+	height: 100%
+@mixin flexright()
+	display: -webkit-box
+	display: -ms-flexbox
+	display: -moz-box	
+	display: -webkit-flex
+	display: flex
+	-webkit-align-items: center
+	align-items: center
+	-webkit-justify-content: flex-end
+	justify-content: flex-end	
+	height: 100%	
+
+
+@mixin flexbottom()
+	display: -webkit-box
+	display: -ms-flexbox
+	display: -moz-box	
+	display: -webkit-flex
+	display: flex
+	-webkit-align-items: flex-end
+	align-items: flex-end
+	-webkit-justify-content: center
+	justify-content: center
+	height: 100%
+
+.flexbottom
+	display: -webkit-box
+	display: -ms-flexbox
+	display: -moz-box	
+	display: -webkit-flex
+	display: flex
+	-webkit-align-items: flex-end
+	align-items: flex-end
+	-webkit-justify-content: center
+	justify-content: center
+	height: 100%
+	&.flexleft
+		-webkit-justify-content: flex-start
+		justify-content: flex-start
+
+@mixin flexbottomleft()
+	display: -webkit-box
+	display: -ms-flexbox
+	display: -moz-box	
+	display: -webkit-flex
+	display: flex
+	-webkit-align-items: flex-end
+	align-items: flex-end
+	-webkit-justify-content: flex-start
+	justify-content: flex-start
+	height: 100%
+
+
+// Transition and TransitionDelay
+@mixin transition($time)
+	-webkit-transition: all $time
+	-moz-transition: all $time
+	-ms-transition: all $time
+	-o-transition: all $time
+	-webkit-transition-timing-function: cubic-bezier(.27,.56,.44,.92) 
+	transition-timing-function: cubic-bezier(.27,.56,.44,.92)
+
+@mixin transitionDelay($time, $delay)
+	-webkit-transition: all $time
+	-moz-transition: all $time
+	-ms-transition: all $time
+	-o-transition: all $time
+	transition: all $time
+	-webkit-transition-timing-function: cubic-bezier(.67,.14,.36,.78)
+	transition-timing-function: cubic-bezier(.67,.14,.36,.78)  
+	-webkit-transition-delay: $delay
+	transition-delay: $delay 
+
+// Animation
+=animation($delay, $duration, $animation, $timing, $iteration)
+	-webkit-animation-delay: $delay
+	-webkit-animation-duration: $duration
+	-webkit-animation-name: $animation
+	-webkit-animation-timing-function: $timing
+	-webkit-animation-iteration-count: $iteration
+	-webkit-animation-fill-mode: forwards /* this prevents the animation from restarting! */
+
+	-moz-animation-delay: $delay
+	-moz-animation-duration: $duration
+	-moz-animation-name: $animation
+	-moz-animation-timing-function: $timing
+	-moz-animation-iteration-count: $iteration
+	-moz-animation-fill-mode: forwards /* this prevents the animation from restarting! */
+
+	-o-animation-delay: $delay
+	-o-animation-duration: $duration
+	-o-animation-name: $animation
+	-o-animation-timing-function: $timing
+	-o-animation-iteration-count: $iteration
+	-o-animation-fill-mode: forwards /* this prevents the animation from restarting! */
+
+	animation-delay: $delay
+	animation-duration: $duration
+	animation-name: $animation
+	animation-timing-function: $timing
+	animation-iteration-count: $iteration
+	animation-fill-mode: forwards /* this prevents the animation from restarting! */
+
+// keyframes mixin
+=keyframes($name)
+	@-webkit-keyframes #{$name}
+		@content
+	@-moz-keyframes #{$name}
+		@content
+	@-ms-keyframes #{$name}
+		@content
+	@keyframes #{$name}
+		@content
+
+=transform($transforms)
+	-moz-transform: $transforms
+	-o-transform: $transforms
+	-ms-transform: $transforms
+	-webkit-transform: $transforms
+	transform: $transforms
+
+/**
+ * Video Centered in Div
+ */
+
+.fill-video
+	position: absolute
+	top: 50% 
+	left: 50%
+	-webkit-transform: translateX(-50%) translateY(-50%)
+	transform: translateX(-50%) translateY(-50%)
+	min-width: 100% 
+	min-height: 100% 
+	width: auto 
+	height: auto
+	overflow: hidden
+
+.centervideo
+	width: 100%
+	position: relative
+	left: 50%
+	top: 50%
+	transform: translate(-50%, -50%)	
+	&.ar4to3
+		@media(min-width: 1280px) and (max-aspect-ratio: 4/3)
+			width: 100%
+			height: auto
+	&.ar16to10
+		@media(min-aspect-ratio: 16/10)
+			width: 100%
+			height: auto
+		@media (max-aspect-ratio: 16/10)
+			height: 100%
+			width: auto
+	&.ar16to9
+		@media(min-aspect-ratio: 16/9)
+			width: 100%
+			height: auto
+		@media (max-aspect-ratio: 16/9)
+			height: 100%
+			width: auto
+
+// .gradient
+	// background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url('/assets/img/back1.jpg') no-repeat
+	// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(59%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.65))), url('/assets/img/back1.jpg') no-repeat
+	// background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url('/assets/img/back1.jpg') no-repeat
+	// background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url('/assets/img/back1.jpg') no-repeat
+	// background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0.65) 100%), url('/assets/img/back1.jpg') no-repeat
+	// background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 59%, rgba(0, 0, 0, 0) 100%), url('/assets/img/back1.jpg') no-repeat

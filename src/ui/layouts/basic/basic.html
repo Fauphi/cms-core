@@ -1,0 +1,19 @@
+
+<template name="App_body">
+			
+	{{> header}}
+
+	<div class="main-container"> 
+  		{{> Template.dynamic template=main}}
+  	</div>
+
+</template>
+
+
+<template name="App_body_no_header">
+
+	<div class="main-container no-header"> 
+  		{{> Template.dynamic template=main}}
+  	</div>
+
+</template>

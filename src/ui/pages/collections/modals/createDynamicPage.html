@@ -1,0 +1,50 @@
+<template name="createDynamicPage">
+	<div id="createDynamicPageModal" class="cms-modal cms-modal-md">
+		<div class="content">
+			<div class="header">
+				Create {{tmplVar}}
+			</div>
+			{{#autoForm schema=collSchema id=autoFormId type="method" meteormethod=meteormethod omitFields=omitFields }}
+			<div class="text autoform-box autoform-modal scroll">
+				<div class="row">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						{{#each afFieldNames }}
+							{{> afQuickField name=this.name }}
+						{{/each}}
+					</div>
+				</div>
+
+				<!-- <div class="row">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						{{> afQuickField name="name" }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-lg-5 col-lg-offset-1">
+						{{> afQuickField name="collection" }}
+						{{> afQuickField name="tmplVar" }}
+						{{> afQuickField name="tmplVar" }}
+						{{> afQuickField name="cmsPage" }}
+						{{> afQuickField name="view" }}
+					</div>
+					<div class="col-md-6 col-lg-5">
+						{{> afQuickField name="titleKeys" }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-lg-5 col-lg-offset-1">
+						{{> afQuickField name="baseSchema" }}
+					</div>
+					<div class="col-md-6 col-lg-5">
+						{{> afQuickField name="langSchema" }}
+					</div>
+				</div> -->
+			</div>
+			<div class="actions clearfix">
+				<button class="btn btn-success pull-right save save-doc" type="sumit">Save</button>
+				<button class="btn btn-default pull-left cancel" data-action="cancel-modal">Close</button>
+			</div>
+			{{/autoForm}}
+		</div>
+	</div>
+</template>

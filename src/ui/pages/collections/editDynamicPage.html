@@ -1,0 +1,100 @@
+<template name="editDynamicPage">
+	<div id="editDynamicPage" class="bootstrapped">
+		
+		<div class="sub-menu-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						<a href="/dynamic-pages" class="btn btn-default yellow pull-left">
+							<i class="fa fa-angle-left" aria-hidden="true"></i> Back to {{tmplVar}}
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{{#if Template.subscriptionsReady}}
+			<div class="sub-sub-menu-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-lg-10 col-lg-offset-1">
+							{{#with doc}}
+								<span class="title">{{ name }}</span>
+							{{/with}}
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="container autoform-box">
+
+				{{#autoForm schema=collSchema doc=doc id="update{{tmplVar}}Member" type="method-update" meteormethod=meteormethod }}
+					<div class="row array-row">
+						<div class="col-md-12 col-lg-10 col-lg-offset-1">
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									{{> afQuickField name="published" }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									{{> afQuickField name="name" }}
+								</div>
+								<div class="col-md-6 col-lg-6">
+									{{> afQuickField name="cmsPage" }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									{{> afQuickField name="collection" }}
+									{{> afQuickField name="tmplVar" }}
+								</div>
+								<div class="col-md-6 col-lg-6">
+									{{> afQuickField name="view" }}
+									{{> afQuickField name="imageKey" }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									{{> afQuickField name="titleKeys" }}
+								</div>
+								<div class="col-md-6 col-lg-6">
+									{{> afQuickField name="subTitleKeys" }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 col-lg-12">
+									{{> afQuickField name="baseSchemaString" }}
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 col-lg-12">
+									{{> afQuickField name="langSchemaString" }}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="actions-row">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-6 col-lg-5 col-lg-offset-1 text-left tip">
+									<i class="fa fa-lightbulb-o" aria-hidden="true"></i> Don't forget to save your changes!
+								</div>
+								<div class="col-md-6 col-lg-5 text-right">
+									<div class="actions clearfix">
+										<button class="btn btn-yellow save" type="sumit"><i class="fa fa-floppy-o"></i> Save Changes</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{{/autoForm}}
+			</div>
+		{{else}}
+			<div class="container">
+			<div class="loader"></div>
+		</div>
+		{{/if}}
+
+	</div>
+</template>

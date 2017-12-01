@@ -1,0 +1,93 @@
+<template name="mediaManager">
+
+	<div id="mediaManager" class="bootstrapped">
+
+		<div class="sub-menu-header">
+			{{> multiupload}}
+		</div>
+
+		<div class="sub-sub-menu-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<span>Media Manager</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div>
+			<div class="filter-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							{{> core_mediaFilter }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row images">
+				<div class="col-md-12">
+					
+					{{#each getImages}}
+						{{#with isPreviousOtherDay}}
+							<div class="date">{{this}}</div>
+						{{/with}}
+						<div class="image text-center">
+							<div class="flexcenter">
+								<div class="actions">
+									<div class="flexcenter">
+										{{#if isInRole 'author,admin'}}
+											<div class="btn btn-yellow" data-action="delete-img-modal">
+												<i class="fa fa-trash"></i>
+											</div>
+										{{/if}}
+										<a class="btn btn-yellow" href="{{ url }}" target="_blank">
+											<i class="fa fa-external-link"></i>
+										</a>
+									</div>
+								</div>
+								<div class="info">
+									Uploaded by {{getUser}} <br>{{getDate}}
+								</div>
+								<img src="{{ resizeImage }}" />
+							</div>
+						</div>
+					{{else}}
+						<div class="no-images">
+							<div class="inner">
+								<i class="fa fa-meh-o" aria-hidden="true"></i> Oops! No images matched your filter settings.
+							</div>
+						</div>
+					{{/each}}
+
+					{{#if moreAvailable }}
+						<div class="text-center load-more">
+							<button class="btn btn-yellow" data-action="load-more">Load more</button>
+						</div>
+					{{/if}}
+				</div>
+			</div>
+
+		</div>
+
+		<div id="deleteImgModal" class="cms-modal cms-modal-xs">
+			<div class="content">
+				<div class="header">
+					Delete image?
+				</div>
+				<div class="text">
+				 	Do you really want to delete that image?
+				</div>
+				<div class="actions clearfix">
+					<button class="btn btn-success pull-right save" data-action="delete-img" data-loading="Loading...">Delete</button>
+					<button class="btn btn-default pull-left cancel" data-action="cancel-modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</template>

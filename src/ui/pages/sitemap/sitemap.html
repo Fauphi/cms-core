@@ -1,0 +1,56 @@
+<template name="sitemap">
+	<div id="sitemap" class="bootstrapped">
+
+		{{#if Template.subscriptionsReady}}
+			<div class="sub-menu-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-lg-10 col-lg-offset-1">
+							{{#each availableLanguages}}
+								<button class="btn btn-default yellow pull-right {{#if isSelected}}active{{/if}}" data-action="change-language">{{languageLabel}}</button>
+							{{/each}}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="sub-sub-menu-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-lg-10 col-lg-offset-1">
+							<span class="title">Config</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="row config-block">
+					<!-- <div class="col-md-4 text-left col-md-offset-2"> -->
+					<div class="col-md-6 text-left config-heading">
+						<h4>Sitemap</h4>
+						<p class="sub-heading">
+							<i>Selected language:</i> <b>{{ selectedLang }}</b> 
+						</p>
+						<p class="description">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+					</div>
+					<div class="col-md-6 text-left">
+						<div class="">
+							{{#each parentPages}}
+								<button class="btn btn-success btn-checkbox {{#if active}}active{{/if}}" data-action="change-state">{{ label }}</button>
+								{{#each childPages name}}
+									<button class="btn btn-success btn-checkbox sub {{#if active}}active{{/if}}" data-action="change-state">{{ label }}</button>
+								{{/each}}
+							{{/each}}
+						</div>
+					</div>
+				</div>
+
+			</div>
+		{{else}}
+			<div class="container">
+			<div class="loader"></div>
+		</div>
+		{{/if}}
+	</div>
+</template>

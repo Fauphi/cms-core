@@ -1,0 +1,40 @@
+#core_mediaFilter
+	padding: 20px
+	border-bottom: 1px solid lightgrey
+	background-color: rgba(0, 0, 0, 0.02)
+	span.type
+		font-weight: 500
+		font-size: 12px
+		padding-right: 8px
+		width: 10px 20px
+		text-align: center
+		display: inline-block
+		&.tags
+			padding-left: 20px
+	.btn-yellow
+		background-color: transparent !important
+		color: rgba(0, 0, 0, 0.5) !important
+		font-size: 11px
+		margin: 0 2px
+		border-color: rgba(0, 0, 0, 0.1)
+		&.active, &:hover
+			color: rgba(0, 0, 0, 0.7) !important
+			background-color: rgba(0, 0, 0, 0.13) !important
+			border-color: rgba(0, 0, 0, 0.1) !important
+	.authors, .time
+		padding: 0 0 10px
+		&:last-child
+			padding: 0
+	.authors
+		width: 100%
+		position: relative
+		height: 29px
+		.author-scroll
+			// width: 100%
+			padding-bottom: 10px
+			overflow-x: scroll
+			white-space: nowrap
+			position: absolute
+			left: 23px
+			right: 10px
+			top: 0

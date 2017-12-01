@@ -1,0 +1,103 @@
+@import './userImageUpload'
+
+$overlayOpacity: 0.7
+$overlayBack: #4279F6
+$yellowColor: #FFD001
+
+#drop_overlay
+	background: $overlayBack
+	height: 100%
+	width: 100%
+	z-index: 100
+	position: fixed
+	top: 0px
+	bottom: 0px
+	left: 0px
+	right: 0px
+	opacity: $overlayOpacity
+	@include flexcenter()
+
+	&.fadein-drop
+		-webkit-animation: fadein-drop 300ms
+	&.fadeout-drop
+		-webkit-animation: fadeout-drop 300ms
+
+	.wrapper
+		color: white
+		// color: black
+		font-size: 26px
+		text-align: center
+
+		.image-icon
+			font-size: 200px
+			margin: 0px
+
+@-webkit-keyframes fadein-drop
+	from 
+		opacity: 0
+	to
+		opacity: $overlayOpacity
+
+@-webkit-keyframes fadeout-drop
+	from 
+		opacity: $overlayOpacity
+	to
+		opacity: 0
+
+#preview-upload
+	position: fixed
+	bottom: 60px
+	left: 60px
+	background: white
+	display: none
+	z-index: 1
+	overflow: hidden
+	border-radius: 4px
+	height: 70px
+	width: 300px
+	box-shadow: 0px 4px 50px #888888
+
+	.finished-label
+		text-align: center
+		font-size: 24px
+		padding: 18px 0px
+		z-index: 100
+		position: relative
+
+	.dz-preview
+		float: left
+		display: none
+		z-index: 10
+		position: relative
+		width: 100%
+		&.dz-processing
+			&:not(.dz-success)
+				display: block
+		>div
+			display: none
+		.dz-progress
+			display: block
+			background: #C4CFD4
+			position: absolute
+			height: 10px
+			width: 230px
+			bottom: 0px
+			right: 0px
+			span
+				width: 0%	
+				background: $yellowColor
+				height: 6px
+				display: block
+		.dz-details
+			display: block
+			position: absolute
+			left: 90px
+			top: 15px
+			.dz-size
+				display: none
+		.dz-image
+			display: block
+			float: left
+			img
+				width: 70px
+				height: 70px

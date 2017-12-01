@@ -1,0 +1,263 @@
+#addBlockModal
+	.wrap
+		text-align: left
+		// width: 404px
+		margin: 0px auto
+		.template-block
+			cursor: pointer
+			padding: 20px 0
+			margin-bottom: 4px
+			width: 138px
+			border: 1px solid lightgrey
+			border-radius: 2px
+			display: inline-block
+			text-align: center
+			font-weight: 400
+			@include transition(200ms)
+			&:hover
+				background-color: rgba(0,0,0,0.03)
+
+#editContentModal, #editPageSettingsModal
+	.afMediaManager
+		img
+			height: 100px
+			width: auto
+	[type="submit"]
+		float: right
+		margin-top: 20px
+		@include transition(200ms)
+		text-transform: capitalize
+		background-color: #FED530 !important
+		color: black !important
+		border-radius: 16px !important
+		border: 1px solid #FED530
+		font-size: 12px
+		text-decoration: none
+		&:hover
+			border: 1px solid #FED530 !important
+		&.active, &:hover
+			background-color: transparent !important
+			color: #FED530 !important
+	.panel
+		border: none
+		box-shadow: none
+		.panel-heading
+			display: none
+
+	.list-group
+		width: 580px
+		label
+			display: none
+
+#createCustomPage
+	.block-container
+		margin-top: 80px
+		margin-bottom: 200px
+		.block
+			background-color: rgba(150,150,150,0.05)
+			background-color: white
+			margin: 0
+			border-top: 1px dashed transparent
+			border-bottom: 1px dashed transparent
+			position: relative
+
+			&.last
+				.tools
+					opacity: 1 !important
+
+			.tools
+				opacity: 0
+				@include transition(200ms)
+				width: 100%
+				padding: 10px
+				position: absolute
+				top: 0
+				left: 0
+				right: 0
+				height: 42px
+				z-index: 9
+				.btn-tool
+					background-color: white
+					padding: 6px 8px
+					border-radius: 2px !important
+					border-color: lightgrey
+					&.content
+						background-color: #FB5D5F
+						border-color: #FB5D5F
+						color: white
+				.btn-add-box
+					position: absolute
+					left: 0
+					right: 0
+					text-align: center
+					top: -16px
+					.btn-add
+						border-color: black
+						border-radius: 50% !important
+						background-color: black
+						color: white
+						font-weight: 100
+						font-size: 20px
+						height: 32px
+						width: 32px
+						// padding: 0 10px
+						.inner
+							width: 100%
+							height: 100%
+							color: white
+							font-weight: 700
+							@include flexcenter()
+				.view-actions
+					// opacity: 0
+					// @include transition(200ms)
+			&:hover
+				border-top: 1px dashed lightgrey
+				border-bottom: 1px dashed lightgrey
+				.tools
+					opacity: 1
+					// .view-actions
+					// 	opacity: 1
+
+
+.asCmsText, .asCmsImage, .asCmsColumns, .asCmsHero, .asCmsBigTitle, .asCmsPeople
+	@include flexcenter()
+	min-height: 30vh
+	padding: 200px 0
+	text-align: center
+	.editor
+		background-color: lightblue
+
+.asCmsSeparator
+	padding: 20px 0
+
+.asCmsImage
+	flex-direction: column
+	padding: 30px 0
+	img
+		width: 700px
+	.title
+		font-size: 18px
+		padding-top: 8px
+		font-style: italic
+		width: 700px
+	@media(max-width: 768px)
+		img, .title
+			width: 100%
+
+
+.asCmsPeople
+	.name
+		font-size: 30px
+		font-weight: 600
+	.info
+		padding-left: 20px
+		text-align: left
+	.image
+		border-radius: 50%
+		overflow: hidden
+
+.asCmsBigTitle
+	flex-direction: column
+	padding: 100px 0 50px
+	font-family: FFScalaSansWebBold, "Open Sans", sans-serif
+	>div
+		width: 70%
+		max-width: 800px
+	.text
+		font-size: 5.5em
+		line-height: 1.1em
+		width: 60%
+		text-align: left
+		p
+			line-height: 1.1em
+			font-family: FFScalaSansWebBold, "Open Sans", sans-serif
+	.date
+		width: 60%
+		text-align: left
+		padding: 40px 0 0
+		opacity: 0.5
+		font-style: italic
+		font-size: 18px
+	@media(max-width: 768px)
+		.text
+			font-size: 2.5em
+			width: 80%
+		.date
+			width: 80%
+
+.asCmsText
+	padding: 20px 0
+	.text
+		width: 60%
+		max-width: 700px
+		text-align: left
+		font-size: 20px
+		p
+			line-height: 1.6em
+			padding: 8px 0
+		h1,h2,h3,h4,h5,h6
+			padding: 24px 0
+			line-height: 1.2em
+		li
+			line-height: 1.5em
+			margin: 6px 0
+	@media(max-width: 768px)
+		.text
+			width: 100%
+			padding: 0 15px
+
+
+.asCmsColumns
+	.col
+		width: 33%
+		img
+			width: auto
+			height: 200px
+	@media(max-width: 768px)
+		display: block !important
+		.col
+			width: 100%
+			margin-bottom: 30px
+			img
+				width: 100%
+				height: auto
+			.quill-content
+				font-size: 18px
+				padding-top: 8px
+
+.asCmsHero
+	position: relative
+	padding: 0
+	margin-bottom: 60px
+	.overlay
+		position: absolute
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		background-color: rgba(0,0,0,0.3)
+		z-index: 1
+	.image
+		width: 100%
+		height: 75vh
+		background-size: cover
+		background-position: center
+	
+	.flexcenter
+		position: absolute
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		z-index: 2
+		.text-on-img
+			color: white
+			font-size: 60px
+			// text-transform: uppercase
+			p
+				line-height: 1.2em
+				font-family: FFScalaSansWebBold, "Open Sans", sans-serif
+	
+	@media(max-width: 768px)
+		.text-on-img
+			font-size: 38px	!important

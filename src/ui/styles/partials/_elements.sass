@@ -1,0 +1,43 @@
+.block-list
+	margin-bottom: 100px
+	.category
+		font-weight: 300
+		font-size: 20px
+		text-transform: capitalize
+		border-bottom: 1px solid lightgrey
+		margin-top: 30px
+		margin-bottom: 30px
+	.pages-row
+		margin-left: 0
+		margin-right: 0
+		.wrapper
+			padding: 8px 4px 0 4px
+			.page-block
+				// height: 200px
+				padding-bottom: 100%
+				border: 1px solid rgba(0,0,0,0.1)
+				// border-radius: 4px
+				cursor: pointer
+				word-break: break-word
+				@include transition(200ms)
+				background-color: rgba(0,0,0,0)
+				&:hover
+					background-color: rgba(0,0,0,0.04)
+					.inner
+						color: rgba(0,0,0,0.9)
+				.inner
+					@include flexcenter()
+					text-transform: capitalize
+					font-weight: 600
+					height: 100%
+					position: absolute
+					top: 0
+					bottom: 0
+					left: 0
+					right: 0
+					// text-transform: uppercase
+					color: rgba(0,0,0,0.6)
+					flex-direction: column
+					// i
+					// 	font-size: 30px
+					// 	color: rgba(0,0,0,0.3)

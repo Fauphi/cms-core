@@ -1,0 +1,58 @@
+
+<template name="seo">
+	<div id="seo" class="bootstrapped">
+
+		<div class="sub-menu-header">
+			<div class="btn btn-default yellow" style="opacity: 0;">Refresh</div>
+		</div>
+
+		<div class="sub-sub-menu-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						<span class="title">SEO</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container block-list">
+			<div class="row">
+				<div class="col-md-6 col-lg-5 col-lg-offset-1 autoform-box">
+					<h4>Global SEO Settings</h4>
+					<div class="form">
+						{{#each tagNames}}
+							<div class="form-group">
+								<label class="control-label">{{this}}</label>
+								<input type="text" name="{{this}}" data-schema-key="title" class="form-control">
+							</div>
+						{{/each}}
+					</div>
+					<div class="btn btn-yellow">Save</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-lg-10 col-lg-offset-1">
+					<h4>Page SEO Settings</h4>
+					{{#each templateFiles}}
+						<div class="category">{{key}}</div>
+						<div class="row pages-row">
+							{{#each files}}
+								<div class="col-md-2 wrapper" data-action="change-tmpl">
+									<div class="page-block">
+										<div class="inner">
+											<!-- <i class="fa fa-file-o" aria-hidden="true"></i> -->
+											<div>{{name}}</div>
+										</div>
+									</div>
+								</div>
+							{{/each}}
+						</div>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</template>

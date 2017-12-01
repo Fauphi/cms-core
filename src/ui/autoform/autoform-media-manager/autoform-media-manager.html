@@ -1,0 +1,66 @@
+<template name="afMediaManager">
+	
+	<div class="afMediaManager">
+		{{#if url}}
+			<div class="afCloudinary-thumbnail">
+				{{#if isImage}}
+					<a href="{{url}}" target="_blank"><img src="{{ url }}"></a>
+				{{else}}
+					File-Type: <a href="{{url}}" target="_blank">{{getFileName}}</a>
+				{{/if}}
+			</div>
+		{{else}}
+      		<div class="no-image">No image..</div>
+	    {{/if}}
+	    <input {{atts}}
+	      type="hidden"
+	      value="{{cleanUrl}}"/>
+	    <div class="btn btn-yellow" data-action="media-manager-modal">Change</div>
+	</div>
+
+	<div id="media-manager-modal" class="cms-modal">
+		<div class="content">
+			<div class="header">
+				Change Image <a class="btn btn-yellow btn-xs pull-right mm-link" href="/media-manager" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> MediaManager</a>
+			</div>
+			{{> core_mediaFilter }}
+			<div class="text">
+			 	<div class="scroller">
+					{{#each getMediaImages}}
+						{{#with isPreviousOtherDay}}
+							<div class="date">{{this}}</div>
+						{{/with}}
+						<div class="img-item text-center" data-action="use-mm-image">
+							<div class="flexcenter">
+								{{#if unsupportedFormat}}
+									<div class="format">
+										<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ cloudinary.format }}
+									</div>
+									<img src="{{ resizeImage '200' }}"/>
+								{{else}}
+									<img src="{{ resizeImage }}"/>
+								{{/if}}
+							</div>
+						</div>
+					{{else}}
+						<div class="no-images">
+							<div class="inner">
+								<i class="fa fa-meh-o" aria-hidden="true"></i> Oops! No images matched your filter settings.
+							</div>
+						</div>
+					{{/each}}
+				
+					{{#if moreAvailable }}
+					<div class="text-center load-more">
+						<div class="btn btn-yellow" data-action="load-more">Load more</div>
+					</div>
+					{{/if}}
+				</div>
+			</div>
+			<div class="actions clearfix">
+				<div class="btn btn-default pull-left cancel" data-action="cancel-modal">Cancel</div>
+			</div>
+		</div>
+	</div>
+
+</template>

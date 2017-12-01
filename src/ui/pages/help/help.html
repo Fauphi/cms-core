@@ -1,0 +1,45 @@
+<template name="help">
+	<div id="jobs" class="bootstrapped">
+		{{#if Template.subscriptionsReady}}
+
+			<!-- {{> langContainer}} -->
+
+			<div class="sub-menu-header">
+				<a href="?view=Contact" class="btn btn-default {{#if isActive 'Contact'}}active{{/if}}">Contact</a>
+				<a href="?view=FAQ" class="btn btn-default {{#if isActive 'FAQ'}}active{{/if}}">FAQ</a>
+			</div>
+
+			<div class="sub-sub-menu-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-lg-10 col-lg-offset-1">
+							<span>{{getActiveName}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{{#if isActive 'Contact'}}
+				<div class="container" data-view="Contact">
+					<div class="row">
+						<div class="col-md-12 col-lg-10 col-lg-offset-1">
+							<p><b>philipp@attic-studio.net</b></p>
+						</div>
+					</div>
+				</div>
+			{{/if}}
+
+			{{#if isActive 'FAQ'}}
+				<div class="container" data-view="FAQ">
+					<div class="row">
+						<div class="col-md-12 col-lg-10 col-lg-offset-1">
+							<p><b>Where can I find you guys?</b></p>
+							<p><i>Our office address is Eldenaerstr. 60, 10247 Berlin</i></p>
+						</div>
+					</div>
+				</div>
+			{{/if}}
+
+		{{/if}}
+	</div>
+</template>

@@ -1,0 +1,79 @@
+#header
+	margin-top: 0px !important
+	position: fixed
+	top: 0px
+	width: 100%
+	z-index: 100
+
+	.wrapper
+		background-color: black
+		color: white	
+		position: relative
+		height: 57px
+		padding-left: 10px
+		padding-right: 15px
+		.dropdown-menu
+			li.active
+				a
+					color: black !important
+					background-color: #f5f5f5 !important
+			a
+				width: 100%
+				&:hover, &.active
+					color: black !important
+
+		.left, .middle, .right
+			position: relative
+			z-index: 10
+			a
+				color: #878787
+				text-transform: uppercase
+				font-size: 12px
+				font-weight: 400
+				padding: 20px 12px
+				display: inline-block
+				letter-spacing: 1px
+				text-decoration: none
+				@include transition(200ms)
+
+				&.active, &:hover
+					color: #DFE0E0
+					text-decoration: none
+		.left
+			float: left
+			a
+				text-transform: none
+				color: white
+				font-size: 20px
+				padding: 0px 6px 0px 0px
+				margin-top: 14px
+				margin-bottom: 14px
+				margin-right: 2px
+				border-right: 1px solid #4D4D4D
+				letter-spacing: 0px
+			span
+				font-family: 'PT Serif', serif
+				color: #FED530
+				font-size: 12px
+				position: relative
+				top: -2px
+				display: inline-block
+				opacity: 0.8
+		.right
+			float: right
+			.bg-image
+				width: 20px
+				height: 20px
+				background-size: cover
+				border-radius: 50%
+				display: inline-block
+				vertical-align: middle
+				position: absolute
+				top: 18px
+				left: -19px
+		.middle
+			z-index: 9
+			position: absolute
+			left: 0
+			width: 100%
+			text-align: center

@@ -1,0 +1,159 @@
+
+<template name="createCustomPage">
+
+	<div id="createCustomPage" class="bootstrapped">
+		{{#if Template.subscriptionsReady}}
+
+		<div class="sub-menu-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						<a href="{{backButtonUrl}}" class="btn btn-default yellow pull-left">
+							<i class="fa fa-angle-left" aria-hidden="true"></i> Back
+						</a>
+						{{#each languageVersions}}
+							<button class="btn btn-default yellow {{#if activeLanguage value}}active{{/if}}" data-action="open-language-version">{{label}}</button>
+						{{/each}}
+						<button class="btn btn-default yellow pull-right" data-action="edit-page-settings-modal">Page Settings</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="sub-sub-menu-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						{{#with getPage}}
+							<span class="title">{{title}}</span>
+							<div class="lang-heading">
+								Preview: <a href="/custom/{{_id}}/preview" target="_blank">/custom/{{_id}}/preview</a> 
+								<i>({{#if publicPreview}}public{{else}}private{{/if}})</i>
+							</div>
+							<div class="lang-heading">URL: <a href="{{websiteBaseUrl}}{{slug}}" target="_blank">{{websiteBaseUrl}}{{slug}}</a></div>
+							<div class="lang-heading">Type: <b>{{type}}</b></div>
+							<div class="lang-heading">Language: <b>{{language}}</b></div>
+							<div class="lang-heading published">Published: <b>{{#if published}}<i class="fa fa-check" aria-hidden="true"></i>{{else}}<i class="fa fa-times" aria-hidden="true"></i>{{/if}}</b></div>
+							<div class="mainImage" data-action="edit-page-settings-modal">
+								<img src="{{ mainImage }}"/>
+							</div>
+						{{/with}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="block-container">
+			{{#each getContentColl}}
+				<div class="block {{#if isLastBlock @index}}is-last-block{{/if}} {{#if isFirstBlock @index}}is-first-block{{/if}}" data-index="{{@index}}">
+					<div class="tools original">
+						<div class="btn-add-box">
+							<button class="btn btn-xs btn-add" data-action="add-block-modal"><div class="inner">+</div></button>
+						</div>
+						<div class="view-actions">
+							<button class="btn btn-tool btn-xs" data-action="delete-block-new"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+							<button class="btn btn-tool btn-xs content" data-action="edit-content-modal"><i class="fa fa-pencil" aria-hidden="true"></i> Content</button>
+							<button class="btn btn-tool btn-xs" data-action="move-up"><i class="fa fa-long-arrow-up" aria-hidden="true"></i> Up</button>
+							<button class="btn btn-tool btn-xs" data-action="move-down"><i class="fa fa-long-arrow-down" aria-hidden="true"></i> Down</button>
+						</div>
+					</div>
+
+					{{> UI.dynamic template=type data=getBlockData }}
+				</div>
+			{{/each}}
+			<div class="block last">
+				<div class="tools original">
+					<div class="btn-add-box">
+						<button class="btn btn-xs btn-add" data-action="add-block-modal"><div class="inner">+</div></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{else}}
+		<div class="container">
+			<div class="loader"></div>
+		</div>
+		{{/if}}
+
+		<div id="save-block">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-5 col-lg-offset-1 text-left tip">
+						<i class="fa fa-lightbulb-o" aria-hidden="true"></i> Don't forget to save your changes!
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-5 text-right">
+						<div class="actions clearfix">
+							<button class="btn btn-yellow save" data-action="save-custom-page" data-loading-text="Saving..."><i class="fa fa-floppy-o"></i> Save Changes</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="addBlockModal" class="cms-modal cms-modal-md">
+			<div class="content">
+				<div class="header">
+					Add Block
+				</div>
+				<div class="text scroll">
+					<div class="wrap">
+					 	{{#each asCmsTemplates}}
+					 		<div class="template-block" data-action="add-block-new" data-type="{{name}}">
+					 			<i class="fa {{icon}}"></i>
+					 			<div>{{title}}</div>
+					 		</div>
+					 	{{/each}}
+					</div>
+				</div>
+				<div class="actions clearfix">
+					<button class="btn btn-default pull-left cancel" data-action="cancel-modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="editContentModal" class="cms-modal">
+			<div class="content {{#unless getBlockSchema}}hidden{{else}}in{{/unless}}">
+				<div class="header">
+					Edit Content
+				</div>
+				<div class="text autoform-box autoform-modal">
+					{{#if getBlockSchema}}
+				 		{{> quickForm schema=getBlockSchema doc=getBlockDoc id="updateBlock" type="method-update" meteormethod="blocks.update"}}
+					{{/if}}
+				</div>
+				<div class="actions clearfix">
+					<button class="btn btn-default pull-left cancel" data-action="cancel-modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- {{#with getDownloads}}
+			<div id="fileLinkModal" class="cms-modal">
+				<div class="content">
+					<div class="header">
+						File Links
+					</div>
+					<div class="text autoform-box autoform-modal">
+						<div class="files">
+							<selec>
+							{{#each getDownloads}}
+								<option value="{{de.attachement}}">{{de.title}}</option>
+								<div class="file" data-action="select-file-link">
+									<i class="fa fa-file-o" aria-hidden="true"></i> 
+									<span>{{name}}</span>
+								</div>
+							{{/each}}
+						</div>
+					</div>
+					<div class="actions clearfix">
+						<button class="btn btn-default pull-left cancel" data-action="cancel-modal">Cancel</button>
+					</div>
+				</div>
+			</div>
+		{{/with}} -->
+
+		{{> editPageSettings }}
+
+	</div>
+
+</template>

@@ -1,0 +1,93 @@
+<template name="sys_pages">
+	<div id="pages" class="bootstrapped">
+
+		<div class="sub-menu-header">
+			<button class="btn btn-default yellow" data-action="create-doc-modal">
+				Create
+			</button>
+			<button class="btn btn-default yellow" data-action="change-doc-order-modal">
+				Change Order
+			</button>
+		</div>
+
+		<div class="sub-sub-menu-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						<span class="title"><span>Pages</span> <i class="fa fa-angle-right" aria-hidden="true"></i> {{ pageName }}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="search-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						<div class="search">
+							<input type="text" placeholder="Search..." data-action="search" /><div class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></div>
+						</div>
+						{{#if Template.subscriptionsReady}}
+							<div class="tags">
+								<span class="type"><i class="fa fa-tags" aria-hidden="true"></i></span>
+								{{#each allTags}}
+									<div class="btn btn-yellow tag {{#if isActiveTag}}active{{/if}}" data-action="select-tag">{{this}}</div>
+								{{/each}}
+							</div>
+						{{/if}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{{#if Template.subscriptionsReady}}
+			<div class="container">
+				<div class="row {{#if isTable}}table-view{{/if}}">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						{{#each pageDocs}}
+							<a href="/pages/{{tmplVar}}/{{_id}}" class="doc-item">
+								<div class="image" style="background-image: url({{ imageKey }})"></div>
+								<div class="info-box">
+									<div class="title">{{ shortenString titleKeys 23 }}</div>
+									<div class="delete" data-action="delete-doc-modal"><i class="fa fa-trash"></i></div>
+									<div class="author">{{ subTitleKeys }}</div>
+								</div>
+							</a>
+						{{/each}}
+					</div>
+				</div>
+				<div class="row pagination-buttons">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						{{#each pages}}
+							<div class="btn btn-default {{#if isActivePage}}active{{/if}}" data-action="change-page">{{this}}</div>
+						{{/each}}
+					</div>
+				</div>
+			</div>
+		{{else}}
+			<div class="container">
+			<div class="loader"></div>
+		</div>
+		{{/if}}
+
+		{{> sys_createDocModal }}
+
+		{{> sys_changeDocOrderModal }}
+
+		<div id="deleteDocModal" class="cms-modal cms-modal-xs">
+			<div class="content">
+				<div class="header">
+					Delete item?
+				</div>
+				<div class="text">
+				 	Do you really want to delete that item?
+				</div>
+				<div class="actions clearfix">
+					<button class="btn btn-success pull-right save" data-action="delete-doc">Delete</button>
+					<button class="btn btn-default pull-left cancel" data-action="cancel-modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</template>

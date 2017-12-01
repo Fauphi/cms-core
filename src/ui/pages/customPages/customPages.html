@@ -1,0 +1,86 @@
+<template name="core_customPages">
+	<div id="core_customPages" class="bootstrapped">
+
+		<div class="sub-menu-header">
+			{{#if isInRole 'author,admin'}}
+				<button class="btn btn-default yellow" data-action="create-doc-modal">
+					Create {{ mainTitle }}
+				</button>
+			{{/if}}
+		</div>
+
+		<div class="sub-sub-menu-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						<span class="title">{{ mainTitle }}s</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="search-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						<div class="search">
+							<input type="text" placeholder="Search..." data-action="search" /><div class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{{#if Template.subscriptionsReady}}
+			<div class="container">
+				<div class="row blocks-view">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						{{#each pageDocs}}
+							<a href="/custom/{{ getMainLanguageValue 'id' }}" class="doc-item">
+								<div class="image" style="background-image: url({{ resizeImage (getMainLanguageValue 'mainImage') '400' }})"></div>
+								<div class="info-box">
+									<div class="title">{{ shortenString (getMainLanguageValue 'title') 20 }}</div>
+									{{#if isInRole 'author,admin'}}
+										<div class="delete" data-action="delete-doc-modal"><i class="fa fa-trash"></i></div>
+									{{/if}}
+									<div class="author">Languages: <b>{{ getPageLanguages }}</b> | Type: <b>{{ getMainLanguageValue 'type' }}</b></div>
+								</div>
+							</a>
+						{{/each}}
+					</div>
+				</div>
+				{{#unless isSearchResults}}
+					<div class="row pagination-buttons">
+						<div class="col-md-12 col-lg-10 col-lg-offset-1">
+							{{#each pages}}
+								<div class="btn btn-default {{#if isActivePage}}active{{/if}}" data-action="change-page">{{this}}</div>
+							{{/each}}
+						</div>
+					</div>
+				{{/unless}}
+			</div>
+		{{else}}
+			<div class="container">
+				<div class="loader"></div>
+			</div>
+		{{/if}}
+
+		{{> core_createCustomPage}}
+
+		<div id="deleteDocModal" class="cms-modal cms-modal-xs">
+			<div class="content">
+				<div class="header">
+					Delete {{ mainTitle }}?
+				</div>
+				<div class="text">
+				 	Do you really want to delete that {{ mainTitle }}?
+				</div>
+				<div class="actions clearfix">
+					<button class="btn btn-success pull-right save" data-action="delete-doc">Delete</button>
+					<button class="btn btn-default pull-left cancel" data-action="cancel-modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</template>

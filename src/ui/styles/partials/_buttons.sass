@@ -1,0 +1,28 @@
+.btn
+	outline: none !important
+	box-shadow: none !important
+
+.btn-yellow
+	@include transition(200ms)
+	text-transform: capitalize
+	background-color: #FED530 !important
+	color: black !important
+	border-radius: 16px !important
+	border: 1px solid #FED530
+	font-size: 12px
+	text-decoration: none
+	&:hover
+		border: 1px solid #FED530 !important
+	&.active, &:hover
+		background-color: transparent !important
+		color: #FED530 !important
+
+.pagination-buttons
+	margin-bottom: 60px
+	.btn
+		border-radius: 50% !important
+		margin-right: 4px
+		&.active
+			background-color: #e6e6e6 !important
+			color: #333 !important
+			border-color: rgba(0, 0, 0, 0.1) !important

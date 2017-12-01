@@ -1,0 +1,22 @@
+<template name="core_mediaFilter">
+	<div id="core_mediaFilter" class="filter">
+		<div class="time">
+			<span class="type"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+			{{#each filters.time}}
+				<div class="btn btn-yellow {{isActiveFilter 'time' value }}" data-action="change-filter" data-type="time" data-value="{{value}}">{{label}}</div>
+			{{/each}}
+			<!-- <span class="type tags"><i class="fa fa-tag" aria-hidden="true"></i></span>
+			{{#each filters.tags}}
+				<div class="btn btn-yellow {{isActiveFilter 'tags' value }}" data-action="change-filter" data-type="tag" data-value="{{value}}">{{label}}</div>
+			{{/each}} -->
+		</div>
+		<div class="authors">
+			<span class="type"><i class="fa fa-user" aria-hidden="true"></i></span>
+			<div class="author-scroll">
+				{{#each getAllAuthors}}
+					<div class="btn btn-yellow {{isActiveFilter 'author' this._id }}" data-action="change-filter" data-type="author" data-value="{{_id}}">{{getAuthorName}}</div>	
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</template>

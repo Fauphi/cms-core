@@ -1,1 +1,1 @@
-# cms-core
+# code example (cms-core)

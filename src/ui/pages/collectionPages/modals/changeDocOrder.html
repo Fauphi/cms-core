@@ -1,0 +1,22 @@
+<template name="sys_changeDocOrderModal">
+	<div id="changeDocOrderModal" class="cms-modal cms-modal-xs">
+		<div class="content">
+			<div class="header">
+				Change Order
+			</div>
+			<div class="text scroll">
+			 	<ul class="list-group sortable">
+			 		{{#each docs}}
+			 			<li data-id="{{_id}}" class="list-group-item clearfix">
+							<span class="pull-left">{{index}}. {{ titleKeys }}</span>
+						</li>
+			 		{{/each}}
+			 	</ul>
+			</div>
+			<div class="actions clearfix">
+				<button class="btn btn-success pull-right save" data-action="save-doc-order" data-loading="Loading...">Save</button>
+				<button class="btn btn-default pull-left cancel" data-action="cancel-modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</template>

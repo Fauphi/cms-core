@@ -1,0 +1,65 @@
+.cms-modal
+	z-index: 1000
+	position: fixed
+	top: 0
+	bottom: 0
+	left: 0
+	right: 0
+	background-color: rgba(0,0,0,0.2)
+	@include flexcenter()
+	display: none
+	&.cms-modal-xs
+		.content
+			min-width: auto
+			width: 400px
+	&.cms-modal-md
+		.content
+			width: 600px
+	&.cms-modal-xl
+		.content
+			width: 80%
+
+	&.in
+		display: flex
+	.content
+		background-color: white
+		border-radius: 8px
+		min-width: 40%
+		max-width: 90%
+		position: relative
+		button[type="submit"]
+			position: absolute
+			bottom: 20px
+			right: 20px
+		.header
+			border-bottom: 1px solid lightgrey
+			padding: 20px
+			text-transform: capitalize
+		.text
+			// min-height: 200px
+			padding: 20px 20px 0
+			&.scroll
+				max-height: 60vh
+				overflow-y: auto
+			form
+				.panel
+					max-height: 70vh
+					overflow-y: auto
+			label
+				font-weight: 400
+				font-size: 12px
+			.inner-save
+				margin-top: 20px
+		.actions
+			padding: 20px 20px 20px
+		.save, .cancel
+			color: black
+			border-radius: 16px !important
+			font-size: 12px
+			&:hover
+				border: 1px solid lightgrey !important
+			&.save
+				background-color: #FED530
+				border-color: #FED530
+				&:hover
+					border: 1px solid #FED530 !important

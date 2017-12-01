@@ -1,0 +1,65 @@
+#editPageSettingsModal
+	>.content
+		position: relative
+		form
+			button[type="submit"]
+				position: absolute
+				bottom: 20px
+				right: 20px
+		>.header
+			padding: 0px
+			.btn-tab
+				padding: 20px
+				cursor: pointer
+				border-width: 0 1px 0 0 !important
+				border-color: rgba(0, 0, 0, 0.1) !important
+				border: none
+				color: rgba(0, 0, 0, 0.4) !important
+				position: relative
+				&:last-child
+					border-width: 0 0 0 0
+				&:after
+					content: ""
+					width: 100%
+					height: 2px
+					background-color: transparent
+					display: block
+					position: absolute
+					left: 0
+					right: 0
+					bottom: 0
+					@include transition(200ms)
+				&.active, &:hover
+					background-color: transparent !important
+					color: black !important
+					&:after
+						background-color: #FED530
+		>.text
+			.tab
+				min-height: 300px
+				&[data-tab="deletepage"]
+					@include flexcenter()
+					flex-direction: column
+					.label
+						display: block
+						margin-bottom: 10px
+
+				[data-action="update-url"]
+					position: absolute
+					bottom: 20px
+					right: 20px
+					font-size: 12px
+
+				.tab-row
+					padding: 20px 0
+					font-size: 12px
+					h4
+						padding-bottom: 10px
+					.red, .green
+						color: red
+						font-size: 12px
+						padding-left: 5px
+						i
+							font-size: 14px
+						&.green
+							color: green

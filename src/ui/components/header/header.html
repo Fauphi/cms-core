@@ -1,0 +1,68 @@
+<template name="header">
+	<div id="header" class="bootstrapped">
+		<div class="wrapper">
+			<div class="left">
+				<a href="/">{{companyName}}</a> <span>by Attic Studio</span>
+			</div>
+			<div class="middle">
+				<div class="links">
+					{{#if isInRole 'editor,author,admin'}}
+						<a class="{{isActiveRoute 'core_translations'}}" href="/translations">Translations</a>
+					{{/if}}
+					{{#if isInRole 'editor,author,admin'}}
+						<span class="dropdown">
+							<a href="#" class="{{isActiveRoute regex='sys_dynamicPages|editDynamicPage|sys_pages|sys_editPage|projects'}} dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								{{#if isInRole 'webmaster'}}
+									<li class="{{isActiveRoute 'dynamicPages'}} webmaster"><a href="/dynamic-pages">Dynamic Collections</a></li>
+									<li role="separator" class="divider"></li>
+								{{/if}}
+								{{#each getPages}}
+									<li class=""><a href="/pages/{{tmplVar}}">{{name}}</a></li>
+								{{/each}}
+							</ul>
+						</span>
+					{{/if}}
+					{{#if isInRole 'editor,author,admin'}}
+						<span class="dropdown">
+							<a href="#" class="{{isActiveRoute regex='customPages|createCustomPage|previewCustomPage'}} dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								{{#if isInRole 'webmaster'}}
+									<li class="webmaster"><a href="/custom">Custom Page Editor</a></li>
+									<li role="separator" class="divider"></li>
+								{{/if}}
+								<li class=""><a href="/custom?type=landingPage">Landing Pages</a></li>
+								<li class=""><a href="/custom?type=successStory">Success Story</a></li>
+								<li class=""><a href="/custom?type=news">News-Articles</a></li>
+								<li class=""><a href="/custom?type=event">Events</a></li>
+							</ul>
+						</span>
+					{{/if}}
+					{{#if isInRole 'editor,author,admin'}}
+						<a class="{{isActiveRoute 'media-manager'}}" href="/media-manager">Media-Manager</a>
+					{{/if}}
+					{{#if isInRole 'admin'}}
+						<span class="dropdown">
+							<a href="#" class="{{isActiveRoute regex='sitemap|contact'}} dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Config <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<!-- <li class="{{isActiveRoute 'sitemap'}}"><a href="/config/sitemap">Sitemap</a></li> -->
+								<li class="{{isActiveRoute 'menuBuilder'}}"><a href="/config/menu-builder">Menu Builder</a></li>
+								<li class="{{isActiveRoute 'contactConfig'}}"><a href="/config/contact">Contact</a></li>
+								<!-- <li class="{{isActiveRoute 'legalConfig'}}"><a href="/config/legal">Legal</a></li> -->
+								<li class="{{isActiveRoute 'embedsConfig'}}"><a href="/config/embeds">Embeds</a></li>
+								{{#if isInRole 'webmaster'}}
+									<li class="{{isActiveRoute 'seo'}}"><a href="/seo">SEO</a></li>
+								{{/if}}
+							</ul>
+						</span>
+					{{/if}}
+				</div>
+			</div>
+			<div class="right">
+				<a class="{{isActiveRoute 'account'}}" href="/account"><div class="bg-image" style="background-image: url({{getProfileImage}})"></div>{{ getUser }}</a>
+				<a class="{{isActiveRoute 'help'}}" href="/help"><i class="fa fa-question-circle"></i></a>
+				<a data-action="logout" href="#">Exit</a>
+			</div>
+		</div>
+	</div>
+</template>

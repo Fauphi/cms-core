@@ -1,0 +1,40 @@
+<template name="core_createCustomPage">
+	<div id="core_createCustomPage" class="cms-modal cms-modal-md">
+		<div class="content">
+			<div class="header">
+				Create new {{ mainTitle }}
+			</div>
+			<div class="text autoform-box autoform-modal scroll">
+				<div class="form">
+					<div class="form-group">
+						<label class="control-label">Title *</label>
+						<input type="text" name="title" data-schema-key="title" class="form-control">
+					</div>
+					<div class="form-group">
+						<label class="control-label">Languages *</label>
+						<div>
+						{{#each availableLanguages}}
+							<button class="btn btn-yellow {{#if isActive 'languages'}}active{{/if}}" data-action="change-data" data-schema-key="languages" data-value="{{value}}">{{label}}</button>
+						{{/each}}
+						</div>
+					</div>
+					{{#unless hasPageType}}
+					<div class="form-group">
+						<label class="control-label">Type *</label>
+
+						<div>
+						{{#each customPageTypes}}
+							<button class="btn btn-yellow {{#if isActive 'type'}}active{{/if}}" data-action="change-data" data-schema-key="type" data-value="{{value}}">{{label}}</button>
+						{{/each}}
+						</div>
+					</div>
+					{{/unless}}
+				</div>
+			</div>
+			<div class="actions clearfix">
+				<button class="btn btn-success pull-right save" data-action="create-custom-page" data-loading-test="Creating...">Create</button>
+				<button class="btn btn-default pull-left cancel" data-action="cancel-modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</template>

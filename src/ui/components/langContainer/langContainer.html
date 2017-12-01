@@ -1,0 +1,13 @@
+<template name="langContainer">
+	<div id="lang-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-right lang">
+					<button class="btn btn-default {{#if selectedLang 'en'}}active{{/if}}" data-action="switch-lang" data-lang="en"><span class="flag-icon flag-icon-gb"></span> English </button> 
+					<button class="btn btn-default {{#if selectedLang 'de'}}active{{/if}}" data-action="switch-lang" data-lang="de"><span class="flag-icon flag-icon-de"></span> Deutsch </button>
+					<!-- <button class="btn btn-default {{#if selectedLang 'cn'}}active{{/if}}" data-action="switch-lang" data-lang="cn"><span class="flag-icon flag-icon-cn"></span> Chinese </button> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,31 @@
+<template name="welcome">
+	<div id="welcome" class="bootstrapped">
+		{{#if isReady}}
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<h1>Hallo {{getName}}</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p><h5><i class="fa fa-lightbulb-o" aria-hidden="true" style="color: #FFB83B;"></i> Updates </h5></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 col-md-offset-2 text-right">
+						<!-- <i>12.07.2017</i> -->
+					</div>
+					<div class="col-md-6 text-left">
+						<p>no updates right now...</p>
+						<!-- <p><b>Sitemap:</b> (<a href="/config/sitemap">link</a>) Hier können alle Haupt-/Unterseiten der Website aktiviert/deaktiviert werden. Dies funktioniert für jede Sprache separat.</p> -->
+					</div>
+				</div>
+			</div>
+		{{else}}
+			<div class="container">
+			<div class="loader"></div>
+		</div>
+		{{/if}}
+	</div>
+</template>

@@ -1,0 +1,19 @@
+
+<template name="previewCustomPage">
+
+	<div id="previewCustomPage" class="bootstrapped">
+		{{#if Template.subscriptionsReady}}
+			{{#with getPage}}
+				<!-- {{{ renderedHtml }}} -->
+				<div id="wrapper"></div>
+				{{appendToDiv}}
+			{{/with}}
+		{{else}}
+			<div class="container">
+			<div class="loader"></div>
+		</div>
+		{{/if}}
+
+	</div>
+
+</template>

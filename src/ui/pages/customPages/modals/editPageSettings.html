@@ -1,0 +1,93 @@
+<template name="editPageSettings">
+	<div id="editPageSettingsModal" class="cms-modal cms-modal-md">
+		<div class="content">
+			<div class="header">
+				<div class="btn btn-tab {{#if isActiveTab 'settings'}}active{{/if}}" data-action="change-tab" data-tab="settings">Page Settings</div>
+				{{#if isType 'landingPage'}}
+					<div class="btn btn-tab {{#if isActiveTab 'url'}}active{{/if}}" data-action="change-tab" data-tab="url">URL</div>
+				{{/if}}
+				<div class="btn btn-tab {{#if isActiveTab 'languages'}}active{{/if}}" data-action="change-tab" data-tab="languages">Languages</div>
+				{{> projectPageSettingsTab}}
+				{{#if isInRole 'author,admin'}}
+					<div class="btn btn-tab {{#if isActiveTab 'deletepage'}}active{{/if}}" data-action="change-tab" data-tab="deletepage">Delete Page</div>
+				{{/if}}
+			</div>
+			<div class="text autoform-box autoform-modal scroll">
+				{{#if isActiveTab 'settings'}}
+					<div class="tab" data-tab="settings">
+				 		{{> quickForm schema=getPageSchema doc=getPage id="updatePage" type="method-update" meteormethod="customPages.update" omitFields=getOmitFields}}
+				 	</div>
+				{{/if}}
+				{{#if isType 'landingPage'}}
+					{{#if isActiveTab 'url'}}
+					 	<div class="tab" data-tab="url">
+					 		<div class="tab-row">
+					 			<p>Changing the URL is a risky thing...</p>
+					 			<p>
+					 				URL rules: 
+					 				<ul>
+					 					<li>Must start with a dash, <i>/services</i></li>
+					 					<li>Letters from A to Z</li> 
+					 					<li>Numbers from 0 to 9</li>
+					 					<li>No special characters and no spaces</li>
+					 					<li>All characters will automatically transformed to lowercase</li>
+					 				</ul>
+					 			</p>
+					 		</div>
+					 		<div class="tab-row">
+					 			<div class="form-group" data-required="true">
+					 				<label class="control-label">Current URL</label>
+	    							<input type="text" name="current-url" class="form-control" value="{{ baseUrl }}{{ getPage.slug }}" disabled="disabled">
+	    						</div>
+					 			<div class="form-group" data-required="true">
+					 				<label class="control-label">Update URL</label>
+	    							<input type="text" name="url" class="form-control" id="update-url-input" placeholder="Enter new URL..." data-action="validate-url">
+	    							{{#if isUrlFieldNotEmpty}}
+		    							{{#if isUrlValid}}
+		    								<span class="green"><i class="fa fa-check"></i> valid URL</span>
+		    							{{else}}
+		    								<span class="red"><i class="fa fa-times"></i> URL is not valid or already in use</span>
+		    							{{/if}}
+		    						{{/if}}
+	  							</div>
+					 			<div class="btn btn-yellow" data-action="update-url">Update URL</div>
+					 		</div>
+					 	</div>
+					{{/if}}
+				{{/if}}
+				{{#if isActiveTab 'languages'}}
+				 	<div class="tab" data-tab="languages">
+				 		<div class="tab-row">
+				 			<h4>Available Versions:</h4>
+					 		{{#each languageVersions}}
+					 			<a href="/custom/{{_id}}" data-action="open-language-version" class="btn btn-default">{{label}}</a>
+					 		{{/each}}
+				 		</div>
+				 		<div class="tab-row">
+				 			<h4>Create Versions:</h4>
+				 			{{#each availableLanguages}}
+				 				<div class="btn btn-yellow" data-action="create-language-version">{{label}}</div>
+				 			{{else}}
+				 				All versions were created.
+				 			{{/each}}
+				 		</div>
+				 	</div>
+				{{/if}}
+				{{> projectPageSettings}}
+				{{#if isInRole 'author,admin'}}
+					{{#if isActiveTab 'deletepage'}}
+					 	<div class="tab" data-tab="deletepage">
+					 		<div>
+					 			<div class="label label-danger">Deleting a page is permanent, so be sure what you are doing!</div>
+					 		</div>
+					 		<div class="btn btn-yellow" data-action="delete-language-version">Delete page</div>
+					 	</div>
+					{{/if}}
+				{{/if}}
+			</div>
+			<div class="actions clearfix">
+				<button class="btn btn-default pull-left cancel" data-action="cancel-modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</template>

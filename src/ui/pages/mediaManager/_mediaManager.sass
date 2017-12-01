@@ -1,0 +1,82 @@
+#mediaManager
+	.row
+		&.heading
+			margin-bottom: 40px
+
+		&.add
+			margin-bottom: 40px			
+
+		&.images
+			.load-more
+				padding: 40px 0
+			.date
+				width: 100%
+				padding: 8px
+				margin: 40px 0 20px
+				font-size: 14px
+				font-weight: 500
+				&:first-child
+					margin-top: 10px
+			.image
+				width: 200px
+				height: 156px
+				background-color: rgba(0,0,0,0.02)
+				display: inline-block
+				position: relative
+				cursor: pointer
+				padding: 10px 10px 36px
+				overflow: hidden
+				@include transition(200ms)
+				&:hover
+					.actions
+						opacity: 1 !important
+				.flexcenter
+					height: 100%
+					img
+						max-width: 100%
+						max-height: 100%
+						width: auto !important
+					.actions
+						@include transition(200ms)
+						text-align: center
+						background-color: rgba(0,0,0,0.2)
+						position: absolute
+						top: 0
+						bottom: 0
+						left: 0
+						right: 0
+						opacity: 0
+						.btn
+							margin: 0 4px
+					.info
+						position: absolute
+						bottom: 0
+						left: 0
+						right: 0
+						font-size: 10px
+
+#mediaManager, #media-manager-modal
+	.no-images
+		width: 100%
+		padding: 40px 0
+		text-align: center
+		.inner
+			display: inline-block
+			text-align: center
+			padding: 20px 40px
+			font-size: 16px
+			color: #D9534F
+			background-color: #FBEEED
+			border: 1px solid #F7D8DD
+			border-radius: 4px
+			
+	&#mediaManager
+		.filter-wrapper
+			position: relative
+			top: -30px
+			background-color: rgba(0, 0, 0, 0.02)
+			border-bottom: 1px solid lightgrey
+			.filter
+				border-bottom: 0px
+				background-color: transparent
+				

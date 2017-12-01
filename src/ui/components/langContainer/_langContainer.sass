@@ -1,0 +1,22 @@
+#lang-container
+	position: fixed
+	right: 0px
+	left: 0px
+	z-index: 99
+	background: transparent
+	top: 51px
+	.lang
+		button[data-action="switch-lang"]
+			border-radius: 0
+			border-width: 0 0px 1px 0px !important
+			box-shadow: none
+			outline: none
+			vertical-align: top
+			margin: 0 12px 0 0
+			&:last-child
+				margin: 0
+			&.active, &:hover
+				background-color: #F0F0F0 !important
+				border-width: 0 0px 2px 0px !important
+			.flag-icon
+				margin-right: 8px

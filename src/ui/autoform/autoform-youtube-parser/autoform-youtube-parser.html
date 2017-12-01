@@ -1,0 +1,33 @@
+<template name="afYoutubeParser">
+	
+	<div class="afYoutubeParser">
+		
+	    <input {{atts}} class="form-control" type="text" value="{{youtubeId}}" data-action="validate-url" />
+
+	    <div class="preview-embed">
+	    {{#with previewId}}
+    		<img src="https://img.youtube.com/vi/{{this}}/hqdefault.jpg" width="280px"/>
+    		<div class="lbl">Youtube Video Preview Image</div>
+	    {{else}}
+	    	<div class="placeholder"></div>
+	    	<div class="lbl">Preview will appear here</div>
+	    {{/with}}
+	    </div>
+
+	    <div class="info">
+	    	<b>Info:</b><br>
+	    	<ul>
+	    		<li>this works only with videos uploaded on <a href="http://www.youtube.com">YouTube</a></li>
+	    		<li>enter Youtube-Video-Url in Input-Field</li>
+	    		<li>make sure "Embed on Website" is allowed in the video settings on YouTube</li>
+	    		<li>the image shows the video-thumbnail so you can be sure it is the correct video</li>
+	    		<li>example Youtube-Video-Url:</li>
+	    		<ul>
+	    			<li><a href="https://www.youtube.com/watch?v=-lqhleCf8R0">https://www.youtube.com/watch?v=-lqhleCf8R0</a></li>
+	    		</ul>
+	    	</ul>
+	    </div>
+
+	</div>
+
+</template>

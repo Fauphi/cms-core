@@ -1,0 +1,112 @@
+<template name="sys_editPage">
+	<div id="editPage" class="bootstrapped">
+		
+		<div class="sub-menu-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-10 col-lg-offset-1">
+						<a href="/pages/{{tmplVar}}" class="btn btn-default yellow pull-left">
+							<i class="fa fa-angle-left" aria-hidden="true"></i> Back
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{{#if Template.subscriptionsReady}}
+			<div class="sub-sub-menu-header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-lg-10 col-lg-offset-1">
+							<span class="title">{{#with doc}}{{ titleKeys }}{{/with}}</span>	
+							<!-- <div class="lang-heading">URL: <a href="{{baseUrl}}/{{urlLang}}{{tmplVar}}/{{ doc.slug }}" target="_blank">{{baseUrl}}/{{urlLang}}{{tmplVar}}/{{ doc.slug }}</a></div>
+							<div class="lang-heading">Language: <b>{{ doc.language }}</b></div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			{{#if page.hasTags}}
+			<div class="tags-container">
+				<div class="container tags-form">
+					<div class="row">
+						<div class="col-md-12 col-lg-10 col-lg-offset-1">
+							<div class="tags">
+								<span class="type"><i class="fa fa-tags" aria-hidden="true"></i></span>
+								{{#each doc.tags}}
+									<div class="btn btn-yellow tag" data-action="remove-tag">{{this}}</div>
+								{{/each}}
+								<div class="add-tag-form">
+									<input type="text" placeholder="Enter new tag..." data-action="add-tag" /><div class="add-btn"><i class="fa fa-plus" aria-hidden="true"></i></div>
+									{{#if showDropdown}}
+										<div class="dropdown">
+											{{#each getAllTags}}
+												<div class="entry" data-action="add-dropdown-tag">{{this}}</div>
+											{{/each}}
+										</div>
+									{{/if}}
+									<div class="remove-tags-info"><i class="fa fa-info-circle" aria-hidden="true"></i> To remove tags, just click on them</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{{/if}}
+
+			<div class="container autoform-box">
+				{{#if collSchema}}
+					{{#autoForm schema=collSchema doc=doc id=formId type="method-update" meteormethod=meteormethod }}
+						<div class="row">
+							<div class="col-md-12 col-lg-10 col-lg-offset-1">
+								{{#each afFieldNames }}
+									{{#if isLangObject }}
+										<div class="col-md-6 col-lg-6">
+											<div class="row">
+												<div class="col-md-12 col-lg-12">
+													<h3 class="autoform-heading">{{ langLabel this.name }}</h3>
+												</div>
+											</div> 
+											{{#each afFieldNames name=this.name}}
+												<div class="row">
+													<div class="col-md-12 col-lg-12">
+														{{> afQuickField name=this.name }}
+													</div>
+												</div>
+											{{/each}}
+										</div>
+									{{else}}
+										<div class="row">
+											<div class="col-md-12 col-lg-12">
+												{{> afQuickField name=this.name }}
+											</div>
+										</div>
+									{{/if}}
+								{{/each}}
+							</div>
+						</div>
+						<div class="actions-row">
+							<div class="container">
+								<div class="row">
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-5 col-lg-offset-1 text-left tip">
+										<i class="fa fa-lightbulb-o" aria-hidden="true"></i> Don't forget to save your changes!
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-5 text-right">
+										<div class="actions clearfix">
+											<button class="btn btn-yellow save" type="sumit"><i class="fa fa-floppy-o"></i> Save Changes</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{{/autoForm}}
+				{{/if}}
+			</div>
+		{{else}}
+			<div class="container">
+			<div class="loader"></div>
+		</div>
+		{{/if}}
+
+	</div>
+</template>

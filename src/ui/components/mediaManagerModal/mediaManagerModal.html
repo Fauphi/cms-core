@@ -1,0 +1,119 @@
+<template name="mediaManagerModal">
+	<!-- <div id="media-manager-modal" class="cms-modal">
+		<div class="content">
+			<div class="header">
+				Change Image <button class="btn btn-yellow btn-xs pull-right" data-action="open-mm">open MediaManager</button>
+			</div>
+			<div class="text">
+			 	<div class="scroller">
+					{{#each getMediaImages}}
+						<div class="img-item text-center" data-action="use-mm-image">
+							{{#if unsupportedFormat}}
+								<div><i class="fa fa-ban" aria-hidden="true"></i></div>
+								<div>{{ cloudinary.format }}</div>
+							{{else}}
+								<img src="{{ resizeImage url }}"/>
+							{{/if}}
+						</div>
+					{{/each}}
+					{{#if moreAvailable }}
+					<div class="text-center load-more">
+						<button class="btn btn-yellow" data-action="load-more">Load more</button>
+					</div>
+					{{/if}}
+				</div>
+			</div>
+			<div class="actions clearfix">
+				<button class="btn btn-default pull-left cancel" data-action="cancel-manager">Cancel</button>
+			</div>
+		</div>
+	</div> -->
+	<div id="media-manager-modal" class="cms-modal">
+		<div class="content">
+			<div class="header">
+				Change Image <a class="btn btn-yellow btn-xs pull-right mm-link" href="/media-manager" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> MediaManager</a>
+			</div>
+			{{> core_mediaFilter }}
+			<div class="text">
+			 	<div class="scroller">
+					{{#each getMediaImages}}
+						{{#with isPreviousOtherDay}}
+							<div class="date">{{this}}</div>
+						{{/with}}
+						<div class="img-item text-center" data-action="use-mm-image">
+							<div class="flexcenter">
+								{{#if unsupportedFormat}}
+									<div class="format">
+										<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ cloudinary.format }}
+									</div>
+									<img src="{{ resizeImage '200' }}"/>
+								{{else}}
+									<img src="{{ resizeImage }}"/>
+								{{/if}}
+							</div>
+						</div>
+					{{else}}
+						<div class="no-images">
+							<div class="inner">
+								<i class="fa fa-meh-o" aria-hidden="true"></i> Oops! No images matched your filter settings.
+							</div>
+						</div>
+					{{/each}}
+				
+					{{#if moreAvailable }}
+					<div class="text-center load-more">
+						<div class="btn btn-yellow" data-action="load-more">Load more</div>
+					</div>
+					{{/if}}
+				</div>
+			</div>
+			<div class="actions clearfix">
+				<div class="btn btn-default pull-left cancel" data-action="cancel-modal">Cancel</div>
+			</div>
+		</div>
+	</div><!-- 
+	<div id="media-manager-modal" class="cms-modal">
+		<div class="content">
+			<div class="header">
+				Change Image <a class="btn btn-yellow btn-xs pull-right mm-link" href="/media-manager" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> MediaManager</a>
+			</div>
+			{{> core_mediaFilter }}
+			<div class="text">
+			 	<div class="scroller">
+					{{#each getMediaImages}}
+						{{#with isPreviousOtherDay}}
+							<div class="date">{{this}}</div>
+						{{/with}}
+						<div class="img-item text-center" data-action="use-mm-image">
+							<div class="flexcenter">
+								{{#if unsupportedFormat}}
+									<div class="format">
+										<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ cloudinary.format }}
+									</div>
+									<img src="{{ resizeImage '200' }}"/>
+								{{else}}
+									<img src="{{ resizeImage }}"/>
+								{{/if}}
+							</div>
+						</div>
+					{{else}}
+						<div class="no-images">
+							<div class="inner">
+								<i class="fa fa-meh-o" aria-hidden="true"></i> Oops! No images matched your filter settings.
+							</div>
+						</div>
+					{{/each}}
+				
+					{{#if moreAvailable }}
+					<div class="text-center load-more">
+						<div class="btn btn-yellow" data-action="load-more">Load more</div>
+					</div>
+					{{/if}}
+				</div>
+			</div>
+			<div class="actions clearfix">
+				<div class="btn btn-default pull-left cancel" data-action="cancel-modal">Cancel</div>
+			</div>
+		</div>
+	</div> -->
+</template>

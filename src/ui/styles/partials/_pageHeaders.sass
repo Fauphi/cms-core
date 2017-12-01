@@ -1,0 +1,72 @@
+.main-container
+	padding-top: 137px
+	&.no-header
+		padding-top: 0px
+
+.sub-menu-header
+	background-color: #1F1F1F
+	text-align: center
+	padding-top: 15px
+	padding-bottom: 15px
+	position: fixed
+	top: 57px
+	left: 0
+	right: 0
+	// z-index: 10
+	z-index: 21
+	.btn
+		background-color: transparent
+		color: #878787
+		text-transform: capitalize
+		border-radius: 0 !important
+		border-width: 1px !important
+		border-color: rgba(0,0,0,0.1) !important
+		box-shadow: none !important
+		outline: none !important
+		@include transition(200ms)
+		&.yellow
+			background-color: #FED530
+			color: black
+			border-radius: 16px !important
+			border: 1px solid #FED530
+			font-size: 12px
+			margin: 0 4px
+			&:hover, &.active
+				border: 1px solid #FED530 !important
+		&.active, &:hover
+			background-color: transparent !important
+			color: #FED530 !important
+			border-color: transparent !important
+	.search-form
+		float: right
+		width: 200px
+		margin-right: 20px
+	.new-entry
+		margin-left: 20px
+		.btn
+			background-color: #FED530
+			color: black
+
+.sub-sub-menu-header
+	color: #1A1A1A
+	font-size: 28px
+	font-weight: 300
+	border-bottom: 2px solid #EAEAEA
+	margin-bottom: 30px
+	padding-top: 40px
+	padding-bottom: 20px
+	// &.translations
+		// padding-left: 10%
+	.title
+		text-transform: capitalize
+		i
+			font-size: 21px
+			position: relative
+			bottom: 1px
+			padding-left: 6px
+			padding-right: 6px
+	.lang-heading
+		font-size: 12px
+		b
+			text-transform: uppercase
+			font-weight: 500
